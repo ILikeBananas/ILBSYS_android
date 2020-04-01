@@ -24,6 +24,9 @@ User ---> (See all hosts) : Asking for all machines
 User ---> (See specific host)
 (See specific host) <--- API : Sending host data
 
+:Host:
+Host -down-> API : Sending usefull data
+
 @enduml
 
 
