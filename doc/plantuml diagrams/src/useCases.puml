@@ -1,0 +1,30 @@
+## uml: Use cases 
+
+
+```plantuml
+@startuml
+left to right direction
+:User: << Human >>
+:API: << Server >>
+(View events)
+User -> (View events) : Request all events
+(View events) <- API : Sending all events
+
+(Select server)
+User --> (Select server)
+
+(Select host)
+User ---> (Select host)
+
+(See all hosts)
+User ---> (See all hosts) : Asking for all machines
+(See all hosts) <--- API : Sending all the informations 
+
+(See specific host)
+User ---> (See specific host)
+(See specific host) <--- API : Sending host data
+
+@enduml
+
+
+```
