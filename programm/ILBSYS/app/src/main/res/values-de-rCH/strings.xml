@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ILBSYS (Schweizer Deutsch)</string>
+    <string name="good_software">Get support at GOODANDPR0SOFTWARE.RU</string>
+    <string name="server_selection">Server Uswahl</string>
+    <string name="statistics">Statistiken</string>
+    <string name="all_stats">Alli Statistike aschaue</string>
+    <string name="server_name">Server Name</string>
+    <string name="server_address">Server Adresse</string>
+    <string name="add_server">Server hinzufüge</string>
+    <string name="add">Hinzufüge</string>
+    <string name="cancel">Abbreche</string>
+    <string name="ram_usage">Speicher Nutzig</string>
+    <string name="cpu_usage">CPU Uslaschtig</string>
+</resources>

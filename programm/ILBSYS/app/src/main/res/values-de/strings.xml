@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ILBSYS (Deutsch)</string>
+    <string name="good_software">Hilfe bei : GOODANDPR0SOFTWARE.RU</string>
+    <string name="server_selection">Server Auswahl</string>
+    <string name="statistics">Statistiken</string>
+    <string name="all_stats">Alle Statistiken ansehen</string>
+    <string name="server_name">Server Name</string>
+    <string name="server_address">Server Adresse</string>
+    <string name="add_server">Server hinzufügen</string>
+    <string name="add">Hinzufügen</string>
+    <string name="cancel">"Abbrechen "</string>
+    <string name="ram_usage">Speicher nutzung</string>
+    <string name="cpu_usage">CPU Auslastung</string>
+</resources>
