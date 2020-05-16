@@ -5,29 +5,25 @@
 @startuml
 left to right direction
 :User: << Human >>
-:API: << Server >>
-(View events)
-User -> (View events) : Request all events
-(View events) <- API : Sending all events
+:InfluxDB: << DataSource >>
+:Server: <<Computer to monitor>>
+
 
 (Select server)
 User --> (Select server)
 
-(Select host)
-User ---> (Select host)
+(Add server)
+User --> (Add Server)
 
-(See all hosts)
-User ---> (See all hosts) : Asking for all machines
-(See all hosts) <--- API : Sending all the informations 
 
-(See specific host)
-User ---> (See specific host)
-(See specific host) <--- API : Sending host data
+(See stats)
+User ---> (See stats)
+(See stats) <--- InfluxDB : Sending host data
 
-:Host:
-Host -down-> API : Sending usefull data
+(Adding stats)
+Server ---> (Adding stats) : Sending infos like CPU and RAM usage
+(Adding stats) ---> InfluxDB : Adding it to the time series database
 
 @enduml
-
 
 ```

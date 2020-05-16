@@ -1,0 +1,69 @@
+## uml: Class diagrams
+
+
+```plantuml
+@startuml
+    +class InfluxDB {
+        + String currentServerAddress
+
+        +setCurrentServerAddress(String address) : void
+        +getRamUsage() : Double
+        +getCPUUsage() : Double
+    }
+
+    +class Utilities {
+        - {static} ArrayList<Server> servers
+        - {static} int selectedServerIndex
+        + {static} getAllServersAsString() : String[]
+        + {static} addServer(server: Server) : void
+        + {static} getCurrentServerIndex() : int
+        + {static} setCurrentServer(serverIndex: int) : void
+        + {static} getCurrentServer() : Server 
+    }
+
+    +class MainActivity extends AppCompatActivity {
+        # onCreate(saveInstanceState: Bundle) : void
+        + selectServerClick(view: View) : void
+        + addServerClick(view: View) : void
+        + statisticsClick(view: View) : void
+    }
+
+    +class AddServerActivity extends AppCompatActivity {
+        + addButton : Button
+        + nameEdit : EditText
+        + addressEdit : EditText
+
+        # onCreate(saveInstanceState: Bundle) : void
+    }
+
+    +class SelectServerActivity extends AppCompatActivity {
+        # onCreate(saveInstanceState : Bundle) : void
+    }
+
+    +class SeeInfos extends AppCompatActivity {
+        + ram_usage : TextView
+        + cpu_usage : TextView
+        + server_name : TextView
+        + server : Server
+        + influxDB : InfluxDB
+
+        + onCreate() : void
+    }
+
+    +class ParameterStringBuilder {
+        + {static} getParamsString(params: Map<String, String>) : String
+    }
+
+    +class Server {
+        + Name: String
+        + Address: String
+
+        + Server(name: String, address: String)
+    }
+
+
+    
+
+
+@enduml
+```
