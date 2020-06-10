@@ -15,4 +15,5 @@
     <string name="uptime">Laufzit</string>
     <string name="days">Tag/Täg</string>
     <string name="hours">Stunde/n</string>
+    <string name="delete_server">Server entferne</string>
 </resources>

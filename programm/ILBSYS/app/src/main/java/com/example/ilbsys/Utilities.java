@@ -42,4 +42,8 @@ public class Utilities extends Application {
     public static Server getCurrentServer() {
         return servers.get(selectedServerIndex);
     }
+
+    public static void deleteServer(int serverIndex) {
+        servers.remove(serverIndex);
+    }
 }

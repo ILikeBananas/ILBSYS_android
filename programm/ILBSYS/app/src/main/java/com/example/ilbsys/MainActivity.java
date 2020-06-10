@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final Button selectServerButton = findViewById(R.id.bt_server_selection);
         selectServerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -38,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         seeStatisticsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 statisticsClick(view);
+            }
+        });
+
+        final Button deleteServerButton = findViewById(R.id.bt_delete_server);
+        deleteServerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                deleteServerClick(view);
             }
         });
     }
@@ -64,6 +72,21 @@ public class MainActivity extends AppCompatActivity {
     public void statisticsClick(android.view.View view) {
         Intent statisticsIntent = new Intent(this, SeeInfos.class);
         startActivity(statisticsIntent);
+    }
+
+    public void deleteServerClick(android.view.View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        // Setting the title for the modal
+        builder.setTitle(R.string.delete_server);
+        builder.setItems(Utilities.getAllServerAsString(), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Utilities.deleteServer(which);
+
+            }
+        });
+        builder.show();
     }
 
 

@@ -39,11 +39,21 @@
         app:layout_constraintTop_toBottomOf="@+id/bt_server_selection" />
 
     <Button
+        android:id="@+id/bt_delete_server"
+        android:layout_width="174dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/delete_server"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_add_server" />
+
+    <Button
         android:id="@+id/bt_add_server"
-        android:layout_width="170dp"
+        android:layout_width="174dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/add_server"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
