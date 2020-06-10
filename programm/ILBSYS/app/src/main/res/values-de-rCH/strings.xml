@@ -12,4 +12,7 @@
     <string name="cancel">Abbreche</string>
     <string name="ram_usage">Speicher Nutzig</string>
     <string name="cpu_usage">CPU Uslaschtig</string>
+    <string name="uptime">Laufzit</string>
+    <string name="days">Tag/Täg</string>
+    <string name="hours">Stunde/n</string>
 </resources>

@@ -11,4 +11,7 @@
     <string name="cancel">Cancel</string>
     <string name="ram_usage">RAM usage</string>
     <string name="cpu_usage">CPU usage</string>
+    <string name="uptime">Uptime</string>
+    <string name="days">day/s</string>
+    <string name="hours">hour/s</string>
 </resources>

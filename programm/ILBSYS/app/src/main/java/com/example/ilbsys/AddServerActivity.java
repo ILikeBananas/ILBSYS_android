@@ -8,7 +8,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddServerActivity extends AppCompatActivity {
-    Button addButton, cancelButton;
+    Button addButton;
     EditText nameEdit, addressEdit;
 
     @Override

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DecimalFormat;
 
 public class SeeInfos extends AppCompatActivity {
-    public TextView ram_usage, cpu_usage, server_name;
+    public TextView ram_usage, cpu_usage, server_name, uptime;
     public Server server;
     public InfluxDB influxDB;
 
@@ -22,6 +22,7 @@ public class SeeInfos extends AppCompatActivity {
         ram_usage = findViewById(R.id.ram_usage);
         cpu_usage = findViewById(R.id.cpu_usage);
         server_name = findViewById(R.id.server_name);
+        uptime = findViewById(R.id.uptime);
 
         // Setting server name
         server_name.setText(Utilities.getCurrentServer().Name);
@@ -38,6 +39,15 @@ public class SeeInfos extends AppCompatActivity {
         // Setting cpu usage
         Double cpu = influxDB.getCPUUsage();
         cpu_usage.setText(dec.format(cpu).toString() + "%");
+
+        // Setting uptime
+        int uptimeValue = influxDB.getUptime();
+        int days = uptimeValue / 60 / 60 / 24;
+        int hours = (uptimeValue - (days * 24 * 60 * 60)) /60 / 60;
+        String s = String.valueOf(days) + " " + getString(R.string.days) + " " + String.valueOf(hours) + " " + getString(R.string.hours);
+        uptime.setText(String.valueOf(days) + " " + getString(R.string.days) + " " + String.valueOf(hours) + " " + getString(R.string.hours));
+        int i = 0;
+
 
     }
 }

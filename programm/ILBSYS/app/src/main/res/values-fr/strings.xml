@@ -12,4 +12,7 @@
     <string name="cancel">Annuler</string>
     <string name="ram_usage">Utilisation RAM</string>
     <string name="cpu_usage">Utilisation CPU</string>
+    <string name="uptime">Temps en ligne</string>
+    <string name="days">jour/s</string>
+    <string name="hours">heure/s</string>
 </resources>
