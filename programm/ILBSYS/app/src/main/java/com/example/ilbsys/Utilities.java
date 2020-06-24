@@ -46,4 +46,9 @@ public class Utilities extends Application {
     public static void deleteServer(int serverIndex) {
         servers.remove(serverIndex);
     }
+
+    public static void editServer(int serverIndex, Server server) {
+        servers.get(serverIndex).Address = server.Address;
+        servers.get(serverIndex).Name = server.Name;
+    }
 }

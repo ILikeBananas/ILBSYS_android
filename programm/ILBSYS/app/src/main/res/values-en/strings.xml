@@ -16,4 +16,5 @@
     <string name="days">day/s</string>
     <string name="hours">hour/s</string>
     <string name="delete_server">Delete server</string>
+    <string name="edit_server">Edit server</string>
 </resources>

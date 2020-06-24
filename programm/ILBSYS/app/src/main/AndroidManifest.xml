@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".AddServerActivity"></activity>
         <activity android:name=".SeeInfos"></activity>
+        <activity android:name=".EditServerActivity"></activity>
     </application>
 
 </manifest>

@@ -16,4 +16,5 @@
     <string name="days">Tag/Täg</string>
     <string name="hours">Stunde/n</string>
     <string name="delete_server">Server entferne</string>
+    <string name="edit_server">Server ändere</string>
 </resources>

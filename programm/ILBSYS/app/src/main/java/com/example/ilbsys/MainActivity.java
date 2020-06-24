@@ -48,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 deleteServerClick(view);
             }
         });
+
+        final Button editServerButton = findViewById(R.id.bt_edit_server);
+        editServerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                editServerClick(view);
+            }
+        });
     }
 
     public void selectServerClick(android.view.View view) {
@@ -87,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    public void editServerClick(android.view.View view) {
+       Intent editServerIntent = new Intent(this, EditServerActivity.class);
+       startActivity(editServerIntent);
     }
 
 
