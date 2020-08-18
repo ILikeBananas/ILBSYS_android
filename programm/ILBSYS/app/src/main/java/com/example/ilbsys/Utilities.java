@@ -1,16 +1,26 @@
 package com.example.ilbsys;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Utilities extends Application {
 
-    //private static Server server = new Server("Tower", "192.168.1.3");
+    public static final String SERVERS = "servers";
+    public static final String USER = "USER";
     private static ArrayList<Server> servers = new ArrayList<Server>();
 
     private static int selectedServerIndex = 0;
+    final SharedPreferences sharedPreferences = getSharedPreferences(USER, MODE_PRIVATE);
+
+    public void Utilities() {
+        loadData();
+    }
 
     public static ArrayList<Server> getAllServer() {
         return servers;
@@ -28,6 +38,7 @@ public class Utilities extends Application {
 
     public static void addServer(Server server) {
         servers.add(server);
+        //saveData();
     }
 
     public static int getCurrentServerIndex() {
@@ -51,4 +62,30 @@ public class Utilities extends Application {
         servers.get(serverIndex).Address = server.Address;
         servers.get(serverIndex).Name = server.Name;
     }
+
+    // Saves the servers in the shared preferences
+    public void saveData() {
+        Gson gson = new Gson();
+        String json = gson.toJson(servers);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SERVERS, json);
+        editor.commit();
+    }
+
+    // Loads the servers from the shared preferences
+    public void loadData() {
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString(SERVERS, "");
+        if (!json.isEmpty()) {
+            Type type = new TypeToken<ArrayList<String>>() {
+
+            }.getType();
+            servers = gson.fromJson(json, type);
+        }
+
+
+
+    }
+
 }
