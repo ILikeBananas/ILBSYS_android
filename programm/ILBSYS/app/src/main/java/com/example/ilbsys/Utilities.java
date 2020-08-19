@@ -80,7 +80,7 @@ public class Utilities extends Application {
     public static void loadData() {
         Gson gson = new Gson();
         String json = sharedPreferences.getString(SERVERS, null);
-        if (!json.isEmpty()) {
+        if (json != null && !json.isEmpty()) {
             Type type = new TypeToken<ArrayList<Server>>() {
 
             }.getType();
