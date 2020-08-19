@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 editServerClick(view);
             }
         });
+
+        // Initialize shared preferences and load the servers from it
+        Utilities.sharedPreferences = getApplicationContext().getSharedPreferences(Utilities.USER, MODE_PRIVATE);
+        Utilities.loadData();
     }
 
     public void selectServerClick(android.view.View view) {

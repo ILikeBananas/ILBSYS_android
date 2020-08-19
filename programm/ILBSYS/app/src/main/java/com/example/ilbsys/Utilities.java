@@ -1,6 +1,7 @@
 package com.example.ilbsys;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
@@ -16,10 +17,11 @@ public class Utilities extends Application {
     private static ArrayList<Server> servers = new ArrayList<Server>();
 
     private static int selectedServerIndex = 0;
-    final SharedPreferences sharedPreferences = getSharedPreferences(USER, MODE_PRIVATE);
+    public static SharedPreferences sharedPreferences;// = getSharedPreferences(USER, MODE_PRIVATE);
 
     public void Utilities() {
         loadData();
+        sharedPreferences = getApplicationContext().getSharedPreferences(USER, MODE_PRIVATE);
     }
 
     public static ArrayList<Server> getAllServer() {
@@ -38,7 +40,7 @@ public class Utilities extends Application {
 
     public static void addServer(Server server) {
         servers.add(server);
-        //saveData();
+        saveData();
     }
 
     public static int getCurrentServerIndex() {
@@ -56,36 +58,34 @@ public class Utilities extends Application {
 
     public static void deleteServer(int serverIndex) {
         servers.remove(serverIndex);
+        saveData();
     }
 
     public static void editServer(int serverIndex, Server server) {
         servers.get(serverIndex).Address = server.Address;
         servers.get(serverIndex).Name = server.Name;
+        saveData();
     }
 
     // Saves the servers in the shared preferences
-    public void saveData() {
+    public static void saveData() {
         Gson gson = new Gson();
         String json = gson.toJson(servers);
-
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(SERVERS, json);
         editor.commit();
     }
 
     // Loads the servers from the shared preferences
-    public void loadData() {
+    public static void loadData() {
         Gson gson = new Gson();
-        String json = sharedPreferences.getString(SERVERS, "");
+        String json = sharedPreferences.getString(SERVERS, null);
         if (!json.isEmpty()) {
-            Type type = new TypeToken<ArrayList<String>>() {
+            Type type = new TypeToken<ArrayList<Server>>() {
 
             }.getType();
             servers = gson.fromJson(json, type);
         }
-
-
-
     }
 
 }
