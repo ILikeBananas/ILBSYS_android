@@ -7,10 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
 
+import pl.pawelkleczkowski.customgauge.CustomGauge;
+
 public class SeeInfos extends AppCompatActivity {
     public TextView ram_usage, cpu_usage, server_name, uptime;
     public Server server;
     public InfluxDB influxDB;
+    public CustomGauge cpu_gauge, ram_gauge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,11 @@ public class SeeInfos extends AppCompatActivity {
         server_name = findViewById(R.id.server_name);
         uptime = findViewById(R.id.uptime);
 
+        // Gauges
+        cpu_gauge = findViewById(R.id.cpu_gauge);
+        ram_gauge = findViewById(R.id.ram_gauge);
+
+
         // Setting server name
         server_name.setText(Utilities.getCurrentServer().Name);
 
@@ -35,10 +43,12 @@ public class SeeInfos extends AppCompatActivity {
         Double ram = influxDB.getRamUsage();
 
         ram_usage.setText(dec.format(ram).toString() + "%");
+        ram_gauge.setValue(ram.intValue());
 
         // Setting cpu usage
         Double cpu = influxDB.getCPUUsage();
         cpu_usage.setText(dec.format(cpu).toString() + "%");
+        cpu_gauge.setValue(cpu.intValue());
 
         // Setting uptime
         int uptimeValue = influxDB.getUptime();

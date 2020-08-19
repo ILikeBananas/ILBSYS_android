@@ -6,6 +6,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <pl.pawelkleczkowski.customgauge.CustomGauge
+        android:id="@+id/cpu_gauge"
+        android:layout_width="129dp"
+        android:layout_height="119dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        app:gaugeEndValue="100"
+        app:gaugePointEndColor="#03FF00"
+        app:gaugePointSize="6"
+        app:gaugePointStartColor="#03FF00"
+        app:gaugeStartAngle="135"
+        app:gaugeStartValue="0"
+        app:gaugeStrokeCap="ROUND"
+        app:gaugeStrokeColor="#C2C2C2"
+        app:gaugeStrokeWidth="10dp"
+        app:gaugeSweepAngle="270"
+        app:layout_constraintStart_toEndOf="@+id/cpu_usage"
+        app:layout_constraintTop_toBottomOf="@+id/server_name" />
+
+    <pl.pawelkleczkowski.customgauge.CustomGauge
+        android:id="@+id/ram_gauge"
+        android:layout_width="129dp"
+        android:layout_height="119dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        app:gaugeEndValue="100"
+        app:gaugePointEndColor="#03FF00"
+        app:gaugePointSize="6"
+        app:gaugePointStartColor="#03FF00"
+        app:gaugeStartAngle="135"
+        app:gaugeStartValue="0"
+        app:gaugeStrokeCap="ROUND"
+        app:gaugeStrokeColor="#C2C2C2"
+        app:gaugeStrokeWidth="10dp"
+        app:gaugeSweepAngle="270"
+        app:layout_constraintStart_toEndOf="@+id/ram_usage"
+        app:layout_constraintTop_toBottomOf="@+id/cpu_gauge" />
+
     <TextView
         android:id="@+id/server_name"
         android:layout_width="384dp"
@@ -31,40 +78,40 @@
         android:id="@+id/ram_usage_lib"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="92dp"
         android:text="@string/ram_usage"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpu_usage_lib" />
 
     <TextView
-        android:id="@+id/ram_usage_lib2"
+        android:id="@+id/ram_usage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="72dp"
-        android:text="@string/uptime"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="136dp"
+        android:text="TextView"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_usage_lib" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpu_usage" />
 
     <TextView
         android:id="@+id/cpu_usage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="136dp"
         android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/server_name" />
 
     <TextView
-        android:id="@+id/ram_usage"
+        android:id="@+id/uptime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="208dp"
         android:layout_marginEnd="32dp"
         android:text="TextView"
         android:textSize="24sp"
@@ -72,13 +119,15 @@
         app:layout_constraintTop_toBottomOf="@+id/cpu_usage" />
 
     <TextView
-        android:id="@+id/uptime"
+        android:id="@+id/ram_usage_lib2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="32dp"
-        android:text="TextView"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="208dp"
+        android:text="@string/uptime"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpu_usage" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpu_usage_lib" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
