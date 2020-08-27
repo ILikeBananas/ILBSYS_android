@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ILBSYS (Englisch)</string>
+    <string name="app_name">ILBSYS (English)</string>
     <string name="server_selection">Server selection</string>
     <string name="statistics">Statistics</string>
     <string name="all_stats">See all stats</string>
