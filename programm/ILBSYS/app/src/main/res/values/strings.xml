@@ -16,4 +16,6 @@
     <string name="hours">hour/s</string>
     <string name="delete_server">Delete server</string>
     <string name="edit_server">Edit server</string>
+    <string name="cpu_temp_graph">CPU temperature</string>
+    <string name="ram_usage_graph">RAM usage</string>
 </resources>

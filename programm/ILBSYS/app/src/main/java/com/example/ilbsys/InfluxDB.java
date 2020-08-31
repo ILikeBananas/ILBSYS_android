@@ -6,6 +6,7 @@ import android.provider.ContactsContract;
 import android.renderscript.ScriptGroup;
 import android.util.JsonReader;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -30,6 +31,11 @@ public class InfluxDB {
     InfluxDB() {
         ThreadPolicy policy = new ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+    }
+
+    class UsageWithTime {
+        public String TimeStamp;
+        public Double Usage;
     }
 
     public void setCurrentServerAddress(String address) {
@@ -129,6 +135,96 @@ public class InfluxDB {
         }
 
         return content;
+    }
+
+    /**
+     * Gets the last hours of cpu temp
+     * @return
+     */
+    public UsageWithTime[] getCPUOverTime() {
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("db", "telegraf");
+        parameters.put("q", "SELECT last(\"temp_input\") FROM \"sensors\" WHERE (\"feature\" = 'tdie') AND time >= now() - 6h GROUP BY time(1m)");
+        StringBuffer content = doInfluxRequest(parameters);
+        String contentString = content.toString();
+        UsageWithTime[] resultArray = new UsageWithTime[0];
+        try {
+            JSONObject reader = new JSONObject(content.toString());
+            JSONArray array = reader.getJSONArray("results").getJSONObject(0).getJSONArray("series").getJSONObject(0).getJSONArray("values");
+
+            resultArray = new UsageWithTime[array.length()];
+            for(int i = 0; i < array.length(); i++) {
+                resultArray[i] = new UsageWithTime();
+
+                // Test if the value is null and if not put the timestamp in it as a string
+                if(array.getJSONArray(i).getString(0) != null) {
+                    resultArray[i].TimeStamp = array.getJSONArray(i).getString(0);
+                } else {
+                    resultArray[i].TimeStamp = "";
+                }
+
+                // Same as above but with the cpu usage
+                if(array.getJSONArray(i).isNull(1)) {
+                    resultArray[i].Usage = 0.0;
+                } else {
+                    resultArray[i].Usage = array.getJSONArray(i).getDouble(1);
+                }
+
+            }
+
+        } catch (Exception e) {
+            UsageWithTime newCPUWithTime = new UsageWithTime();
+            UsageWithTime[] empty = new UsageWithTime[1];
+            empty[0] = newCPUWithTime;
+            return empty;
+        }
+
+        return resultArray;
+    }
+
+    /**
+     * Gets the last hours of RAM usage
+     * @return
+     */
+    public UsageWithTime[] getRAMOverTime() {
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("db", "telegraf");
+        parameters.put("q", "SELECT mean(\"used_percent\") FROM \"mem\" WHERE time >= now() - 6h GROUP BY time(1m)");
+        StringBuffer content = doInfluxRequest(parameters);
+        String contentString = content.toString();
+        UsageWithTime[] resultArray = new UsageWithTime[0];
+        try {
+            JSONObject reader = new JSONObject(content.toString());
+            JSONArray array = reader.getJSONArray("results").getJSONObject(0).getJSONArray("series").getJSONObject(0).getJSONArray("values");
+
+            resultArray = new UsageWithTime[array.length()];
+            for(int i = 0; i < array.length(); i++) {
+                resultArray[i] = new UsageWithTime();
+
+                // Test if the value is null and if not put the timestamp in it as a string
+                if(array.getJSONArray(i).getString(0) != null) {
+                    resultArray[i].TimeStamp = array.getJSONArray(i).getString(0);
+                } else {
+                    resultArray[i].TimeStamp = "";
+                }
+
+                // Same as above but with the cpu usage
+                if(array.getJSONArray(i).isNull(1)) {
+                    resultArray[i].Usage = 0.0;
+                } else {
+                    resultArray[i].Usage = array.getJSONArray(i).getDouble(1);
+                }
+
+            }
+
+        } catch (Exception e) {
+            UsageWithTime newCPUWithTime = new UsageWithTime();
+            UsageWithTime[] empty = new UsageWithTime[1];
+            empty[0] = newCPUWithTime;
+            return empty;
+        }
+
+        return resultArray;
     }
 
 }

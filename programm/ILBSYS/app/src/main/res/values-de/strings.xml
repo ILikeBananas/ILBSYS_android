@@ -17,4 +17,6 @@
     <string name="hours">Stunde/n</string>
     <string name="delete_server">Server entfernen</string>
     <string name="edit_server">Server ändern</string>
+    <string name="cpu_temp_graph">CPU Temperatur</string>
+    <string name="ram_usage_graph">RAM ausnutzung</string>
 </resources>
