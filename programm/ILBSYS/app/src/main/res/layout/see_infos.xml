@@ -86,8 +86,8 @@
                     android:layout_marginStart="16dp"
                     android:text="@string/cpu_temp_graph"
                     android:textSize="24sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="18dp" />
+                    app:layout_constraintBottom_toTopOf="@+id/cpu_graph"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <com.jjoe64.graphview.GraphView
                     android:id="@+id/cpu_graph"
