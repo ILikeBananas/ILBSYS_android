@@ -1,0 +1,9 @@
+@startuml
+class Server {
+    + Address: String
+    + Name: String
+
+    + Server(name: String, address: String)
+}
+
+@enduml

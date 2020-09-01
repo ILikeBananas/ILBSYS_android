@@ -1,0 +1,14 @@
+@startuml
+
+class InfluxDB {
+    + currentSewrverAddress: String
+
+    + setCurrentServerAddress(address: String): void
+    + getRamUsage(): Double
+    + getUptime(): int
+    + getCPUUsage(): Double
+    + doInfluxRequest(parameters; Map<String, String>): StringBuffer
+    + getCPUOverTime(): UsageWithTime[]
+    + getRAMOverTime(): UsageWithTime[]
+}
+@enduml

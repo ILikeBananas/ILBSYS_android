@@ -1,0 +1,19 @@
+@startuml
+class Utilities extends Application {
+    + (static) SERVERS: String
+    + (static) USER: String
+    - (static) servers: ArrayList<Server>
+    - (static) selectedServerIndex: int
+    + (static) sharedPreferences: SharedPreferences
+
+    + (static) getAllServerAsString(): String[]
+    + (static) addServer(server: Server): void
+    + (static) getCurrentServerIndex(): int
+    + (static) setCurrentServer(serverIndex: int): void
+    + (static) getCurrentServer(): Server
+    + (static) deleteServer(serverIndex: int): void
+    + (static) editServer(serverIndex: int, server: Server)
+    + (static) saveData(): void
+    + (static) loadData(): void
+}
+@enduml
