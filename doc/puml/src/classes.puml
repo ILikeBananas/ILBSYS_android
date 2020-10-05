@@ -27,6 +27,7 @@ class Utilities extends Application {
     - (static) selectedServerIndex: int
     + (static) sharedPreferences: SharedPreferences
 
+    + (static) getAllServer(): Server[]
     + (static) getAllServerAsString(): String[]
     + (static) addServer(server: Server): void
     + (static) getCurrentServerIndex(): int
@@ -36,6 +37,11 @@ class Utilities extends Application {
     + (static) editServer(serverIndex: int, server: Server)
     + (static) saveData(): void
     + (static) loadData(): void
+}
+
+class UsageWithTime {
+    + TimeStamp: String
+    + Usage: Double
 }
 
 
