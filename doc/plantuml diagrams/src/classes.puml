@@ -6,19 +6,29 @@
     +class InfluxDB {
         + String currentServerAddress
 
+        +InfluxDB(): void
         +setCurrentServerAddress(String address) : void
         +getRamUsage() : Double
         +getCPUUsage() : Double
+        +getUptime() : int
+        -doInfluxRequest(parameters: Map<string, string>): StringBuffer
+        +getCPUOverTime(): UsageWithTime[]
+        +getRAMOverTime(): UsageWithTime[]
     }
 
     +class Utilities {
         - {static} ArrayList<Server> servers
         - {static} int selectedServerIndex
+        + {static} Utilities()
         + {static} getAllServersAsString() : String[]
         + {static} addServer(server: Server) : void
         + {static} getCurrentServerIndex() : int
         + {static} setCurrentServer(serverIndex: int) : void
         + {static} getCurrentServer() : Server 
+        + {static} deleteServer(serverIndex: int): void
+        + {static} editServer(serverIndex: int, server: Server)
+        + {static} saveData(): void
+        + {static} loadData(): void
     }
 
     +class MainActivity extends AppCompatActivity {
@@ -26,6 +36,8 @@
         + selectServerClick(view: View) : void
         + addServerClick(view: View) : void
         + statisticsClick(view: View) : void
+        + deleteServerClick(view: View): void
+        + editServerClick(view: View): void
     }
 
     +class AddServerActivity extends AppCompatActivity {
@@ -44,8 +56,11 @@
         + ram_usage : TextView
         + cpu_usage : TextView
         + server_name : TextView
+        + uptime: TextView
         + server : Server
         + influxDB : InfluxDB
+        + cpu_gauge: CustomGauge
+        + ram_gauge: CustomGauge
 
         + onCreate() : void
     }
@@ -61,6 +76,14 @@
         + Server(name: String, address: String)
     }
 
+    +class UsageWithTime {
+        + TimeStamp: String
+        + Usage: Double
+    }
+
+    Utilities *-- Server
+    InfluxDB *-- ParameterStringBuilder
+    InfluxDB *-- UsageWithTime
 
     
 
